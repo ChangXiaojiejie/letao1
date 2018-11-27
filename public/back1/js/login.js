@@ -30,6 +30,9 @@ $(function () {
             min: 2,
             max: 6,
             message: "输入的用户名必须是2到6位"
+          },
+          callback:{
+            message : "用户名不存在"
           }
         }
       },
@@ -45,6 +48,9 @@ $(function () {
             min: 6,
             max: 12,
             message: '输入的密码必须是6到12位'
+          },
+          callback:{
+            message:"密码错误"
           }
         },
       }
@@ -95,22 +101,6 @@ $(function () {
      $('#form').data('bootstrapValidator').resetForm();
    });
 
-
-   /** 
-    * 4.开启进度条
-   */
-
-   //如果有ajax请求，开始
-  $(document).ajaxStart(function () {
-    NProgress.start();
-  });
-
-  $(document).ajaxStop(function () {
-    setTimeout(function () {
-      NProgress.done();
-    },500);
-    
-  });
 
 
 
