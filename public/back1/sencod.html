@@ -71,7 +71,7 @@
       </div>
       <div class="content">
         <div>
-          <button class="btn btn-default pull-left mb_20">添加分类</button>
+          <button class="btn addBtn btn-default pull-left mb_20">添加分类</button>
         </div>
         <table class="table table-bordered table-hover">
           <thead>
@@ -122,6 +122,61 @@
     </div>
   </div>
 
+  <div class="assort">
+    <!-- Modal -->
+    <div class="modal fade" id="cartModal" tabindex="-1">
+      <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal"><span>&times;</span></button>
+            <h4 class="modal-title" id="myModalLabel">温馨提示</h4>
+          </div>
+          <div class="modal-body">
+            <form id="form">
+              <div class="form-group">
+                <div class="dropdown">
+                  <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">
+                    <span id="dropdownText">请选择一级分类</span>
+                    <span class="caret"></span>
+                  </button>
+                  <ul class="dropdown-menu">
+                    <!-- 刨个坑 -->
+                    <li>我是一个li</li>
+                  </ul>
+                </div>
+
+                <input type="hidden" name="categoryId">
+                <!-- 火热的品牌 -->
+                <input type="hidden" name="hot" value="1">
+              </div>
+              <div class="form-group">
+                <input type="text" class="form-control" placeholder="请输入二级分类" name="brandName">
+              </div>
+              <div class="form-group">
+                <label class="btn btn-default" for="fileupload">上传图片</label>
+                <!-- 注意:
+                        1. 指定name用于让后台获取图片, 所以不能乱写
+                        2. 指定data-url, 指定接口地址
+                -->
+                <input type="file" name="pic1" data-url="/category/addSecondCategoryPic" id="fileupload" style="display: none;">
+              </div>
+              <div class="form-group" id="imgBox">
+                <img src="images/none.jpg" width="100">
+                <!-- 图片地址 -->
+                <input type="hidden" name="brandLogo">
+              </div>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+            <button type="button" class="btn btn-primary " id="add">添加</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
   <script type="text/html" id="tml">
 
     {{each rows v i}}
@@ -131,8 +186,18 @@
         <td>{{v.categoryName}}</td>
         <td><img src="{{v.brandLogo}}" alt="" height="50px"></td>
       </tr>
+    {{/each}}
+  
+  </script>
+
+
+  <script type="text/html" id="firest_tml">
+    {{each rows v i }}
+
+    <li data-id="{{v.id}}"><a href="#">{{v.categoryName}}</a></li>
 
     {{/each}}
+  
   
   </script>
 
@@ -146,8 +211,6 @@
   <script src="./js/isLogin.js"></script>
   <script src="./js/common.js"></script>
   <script src="./js/sencode.js"></script>
-
-
 
 
 </body>
