@@ -9,8 +9,7 @@
   <link rel="stylesheet" href="./css/common.css">
   <link rel="stylesheet" href="./css/firest.css">
   <title>乐淘商城</title>
-  <style>
-  </style>
+ 
 
 </head>
 
@@ -125,10 +124,18 @@
           <div class="modal-content">
             <div class="modal-header">
               <button type="button" class="close" data-dismiss="modal"><span>&times;</span></button>
-              <h4 class="modal-title" id="myModalLabel">温馨提示</h4>
+              <h4 class="modal-title" id="myModalLabel">添加分类</h4>
             </div>
             <div class="modal-body">
-             <input type="text" class="form-control" placeholder="请输入一级分类">
+                <form class="form" id="form">
+                    <div class="form-group">
+                    <input type="text" class="form-control " name="categoryName" placeholder="请输入一级分类">
+                    </div>
+                    <!-- <div class="form-group">
+                    <input type="submit">
+                    </div> -->
+                   
+                </form>
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
