@@ -3,7 +3,7 @@
 $(function () {
 
   var currentPage = 1;
-  var pageSize = 2;
+  var pageSize = 5;
 
   function rend() {
 
@@ -30,22 +30,14 @@ $(function () {
           totalPages: Math.ceil(info.total / pageSize), //指定总页数
           onPageClicked: function (a, b, c, page) {
             console.log(page);
-
             //page指的是点击的页码,修改了当前页
             currentPage = page;
             //重新渲染
             rend();
           }
         });
-
-
-
-
-
       }
     });
-
-
   }
   rend();
 
@@ -85,75 +77,34 @@ $(function () {
         }
       }
     });
+  });
 
-    $('#add').click(function () {
-      
-      $('#form').submit();
-      
-  
+  //表单验证通过事件
+  $('#form').on("success.form.bv", function (e) {
+    //阻止默认提交
+    e.preventDefault();
 
-    //表单验证通过事件
-    $('#form').on("success.form.bv", function (e) {
-      //阻止默认提交
-      e.preventDefault();
-    
-      //使用ajax进行提交
-      // console.log('验证通过事件触发');
-      var text = $('#form input').val();
-      $.ajax({
-        url:'/category/addTopCategory',
-        data:{
-          categoryName:text
-        },
-        type:'post',
-        success:function (info) {
+    //使用ajax进行提交
+    // console.log('验证通过事件触发');
+    var text = $('#form input').val();
+    $.ajax({
+      url: '/category/addTopCategory',
+      data: {
+        categoryName: text
+      },
+      type: 'post',
+      success: function (info) {
 
-          if(info.success){
-            //关闭模态框
-            $('#addCat').modal('hide');
-            //重置一级添加框的表单内容和状态
-            $('#form').data("bootstrapValidator").resetForm(true);
-            //重新渲染页面
-            rend();
-
-          }
+        if (info.success) {
+          //关闭模态框
+          $('#addCat').modal('hide');
+          //重置一级添加框的表单内容和状态
+          $('#form').data("bootstrapValidator").resetForm(true);
+          //重新渲染页面
+          rend();
         }
-
-      });
-
-      
-
-    })
-
-  });
-
-
-    //给添加按钮注册点击事件，发送ajax请求
-    // $('#add').click(function () {
-    //   var text = $('#form input').val();
-    //   $.ajax({
-    //     url:'/category/addTopCategory',
-    //     data:{
-    //       categoryName:text
-    //     },
-    //     type:'post',
-    //     success:function (info) {
-
-    //       if(info.success){
-    //         $('#addCat').modal('hide');
-    //         rend();
-    //       }
-    //     }
-
-    //   });
-
-
-    // });
-
-
-    // alert('触发');
-
-
-  });
+      }
+    });
+  })
 
 });
