@@ -101,6 +101,7 @@ $(function () {
           //重置一级添加框的表单内容和状态
           $('#form').data("bootstrapValidator").resetForm(true);
           //重新渲染页面
+          currentPage = 1;
           rend();
         }
       }

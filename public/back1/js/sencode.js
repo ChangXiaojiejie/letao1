@@ -188,6 +188,7 @@ $(function () {
           $('#cartModal').modal('hide');
 
           //渲染页面
+          currentPage=1;
           rend();
 
           //清空输入框的内容和状态
