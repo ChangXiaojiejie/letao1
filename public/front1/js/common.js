@@ -1,7 +1,5 @@
-
-
 !(function () {
-  console.log(111)
+ 
   //区域滚动初始化
   mui('.mui-scroll-wrapper').scroll({
 
