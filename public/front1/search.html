@@ -7,6 +7,7 @@
   <link rel="stylesheet" href="./lib/mui/css/mui.css" />
   <link rel="stylesheet" href="./lib/fa/css/font-awesome.min.css" />
   <link rel="stylesheet" href="./css/common.css" />
+  <link rel="stylesheet" href="./css/search.css">
   <link rel="icon" href="./favicon.ico" />
 
   <title>乐淘商城</title>
@@ -17,79 +18,28 @@
 <body>
   <div class="lt_container">
     <div class="lt_header">
-      <a href="index.html" class="lt_left"> <i class="fa fa-home"></i> </a>
-      <a href="search.html" class="lt_right">
-        <i class="fa fa-search"></i>
-      </a>
-      <h3>常乐淘</h3>
+      <!-- 返回上一页 -->
+      <a href="javascript:history.back();" class="lt_left"> <i class="mui-icon mui-icon-back"></i> </a>
+
+      <h3>搜索中心</h3>
     </div>
     <div class="lt_content">
 
-      <div class="mui-scroll-wrapper">
-        <div class="mui-scroll">
-          <!-- 这里放置真实显示的DOM内容 -->
-          <div id="slider" class="mui-slider">
-            <div class="mui-slider-group mui-slider-loop">
-              <!-- 额外增加的一个节点(循环轮播：第一个节点是最后一张轮播) -->
-              <div class="mui-slider-item mui-slider-item-duplicate">
-                <a href="#">
-                  <img src="./images/banner6.png">
-                </a>
-              </div>
-              <!-- 第一张 -->
-              <div class="mui-slider-item mui-active">
-                <a href="#">
-                  <img src="./images/banner1.png">
-                </a>
-              </div>
-              <!-- 第二张 -->
-              <div class="mui-slider-item">
-                <a href="#">
-                  <img src="./images/banner2.png">
-                </a>
-              </div>
-              <!-- 第三张 -->
-              <div class="mui-slider-item ">
-                <a href="#">
-                  <img src="./images/banner3.png">
-                </a>
-              </div>
-              <!-- 第四张 -->
-              <div class="mui-slider-item">
-                <a href="#">
-                  <img src="./images/banner4.png">
-                </a>
-              </div>
-              <!-- 第五张 -->
-              <div class="mui-slider-item">
-                  <a href="#">
-                    <img src="./images/banner5.png">
-                  </a>
-                </div>
-                <!-- 第六张 -->
-              <div class="mui-slider-item">
-                  <a href="#">
-                    <img src="./images/banner6.png">
-                  </a>
-                </div>
-              <!-- 额外增加的一个节点(循环轮播：最后一个节点是第一张轮播) -->
-              <div class="mui-slider-item mui-slider-item-duplicate">
-                <a href="#">
-                  <img src="./images/banner1.png">
-                </a>
-              </div>
-            </div>
-            <div class="mui-slider-indicator">
-              <div class="mui-indicator mui-active"></div>
-              <div class="mui-indicator"></div>
-              <div class="mui-indicator "></div>
-              <div class="mui-indicator"></div>
-              <div class="mui-indicator"></div>
-              <div class="mui-indicator"></div>
-            </div>
-          </div>
-        </div>
+      <div class="history_top">
+        <input type="text" class="search_input" placeholder="请输入搜索关键字">
+        <button class="mui-btn mui-btn-primary search_btn">搜索</button>
       </div>
+
+      <div class="history_body">
+
+        <!-- 玩个大坑 -->
+
+
+
+      </div>
+
+
+
 
     </div>
     <div class="lt_footer">
@@ -122,8 +72,40 @@
     </div>
   </div>
 
+  <!-- 渲染的模板引擎 -->
+  <script type="text/html" id="historyTpl">
+    {{if list.length ===0}}
+      <p>没有更多的数据了</p>
+    {{else}}
+    <div class="title">
+        <div class="left mui-pull-left">
+          搜索历史
+        </div>
+        <div class="right mui-pull-right">
+          <i class="fa fa-trash"></i>
+          <span class="allDelete">清空记录</span>
+        </div>
+      </div>
+      <div class="content">
+        <ul>
+          {{each list v i}}
+          <li>
+            <a  href="javascript:;">{{v}}</a>
+            <i  class="btn_delete mui-pull-right mui-icon mui-icon-closeempty"></i>
+          </li>
+          {{/each}}
+        </ul>
+      </div>
+      {{/if}}
+  
+  
+  </script>
+
   <script src="./lib/mui/js/mui.js"></script>
+  <script src="./lib/zepto/zepto.min.js"></script>
+  <script src="./lib/artTemplate/template-web.js"></script>
   <script src="./js/common.js"></script>
+  <script src="./js/search.js"></script>
 </body>
 
 </html>
