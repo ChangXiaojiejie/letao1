@@ -13,7 +13,7 @@ $(function () {
         //登录检测
         if(info.error==400){
           mui.confirm('请先登录再访问','文星提醒',['去登陆','取消'],function (e) {
-            location.href = "login.html?url=''";
+            location.href = "login.html?url="+location.href;
             
           });
           return;
